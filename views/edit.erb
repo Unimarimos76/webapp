@@ -1,0 +1,18 @@
+<main class="main-wrapper" id="container" style="height: 500px">
+  <div class="wrapper">
+
+    <form action="/edit/<%=@show['id'] %>" method="post" enctype="multipart/form-data">
+      <label>タイトル</label>
+      <input type="hidden" name="_method" value="put">
+      <input type="hidden" class="form-control" value="<%= @show['id'] %>" name="id">
+      <input type="text" class="form-control" value="<%= @show['title'] %>" name="title">
+      <label>説明</label>
+      <textarea class="form-control" name="description"><%= @show['description'] %></textarea>
+      <label>メイン画像</label>
+      <input type="file" class="form-control" value="<%= @show['image_path'] %>"  name="file">
+      <button type="submit" class="btn btn-success btn">投稿</button>
+      <hr>
+      <div class="preview" />
+    </form>
+  </div>
+</main>

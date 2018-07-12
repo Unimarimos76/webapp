@@ -1,0 +1,51 @@
+
+
+<main class="main-wrapper" id="container">
+
+  <!-- image Gallery -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+
+
+
+
+
+  <div class="wrapper">
+    <div class="">
+      <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-3 masonry">
+        <% @show.each do |shows| %>
+          <li class="masonry-item grid">
+            <figure class="effect-sarah"> <img src="<%= shows['image_path'] %>"  width="500" height="500" />
+              <figcaption>
+
+                <h2><%= Rack::Utils.escape_html(shows['title']) %></h2>
+
+                <p><%= Rack::Utils.escape_html(shows['description']) %></p>
+
+                <a href="/manage/<%= shows['id'] %>">View more</a> </figcaption>
+
+            </figure>
+            <form action="/destroy/<%= shows['id'] %>" method="post" style="display: inline; float: none">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="btn btn-primary btn-sm">削除<i class="far fa-trash-alt" onClick="return confirm('削除します。\nよろしいですか？');"></i></button>
+            </form>
+            <a href="/edit/<%= shows['id'] %>" style="display: inline; float: none">
+              <button type="button" class="btn btn-success btn-sm">編集<i class="fas fa-edit"></i></button>
+            </a>
+          </li>
+          <br>
+          <br>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+
